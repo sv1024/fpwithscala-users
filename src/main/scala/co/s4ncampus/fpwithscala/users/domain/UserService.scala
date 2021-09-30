@@ -15,6 +15,11 @@ class UserService[F[_]](repository: UserRepositoryAlgebra[F], validation: UserVa
   
   def update(user: User, legalId: String): F[Int] = 
       repository.update(user, legalId)
+  def delete(legalId:String)(implicit M: Monad[F]): EitherT[F, UserNotExistError, Int] = {
+    for{
+      deleted <- EitherT.liftF(repository.deleteUser(legalId))
+    } yield deleted
+  }
 }
 object UserService{
   def apply[F[_]](

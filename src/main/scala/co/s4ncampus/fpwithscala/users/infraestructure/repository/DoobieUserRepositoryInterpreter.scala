@@ -20,7 +20,7 @@ private object UserSQL {
     FROM USERS
     WHERE LEGAL_ID = $legalId
   """.query[User]
-
+  
 }
 
 class DoobieUserRepositoryInterpreter[F[_]: Bracket[?[_], Throwable]](val xa: Transactor[F])

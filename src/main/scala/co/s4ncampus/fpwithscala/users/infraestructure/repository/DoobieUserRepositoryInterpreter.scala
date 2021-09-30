@@ -8,23 +8,23 @@ import cats.effect.Bracket
 
 private object UserSQL {
   def insert(user: User): Update0 = sql"""
-    INSERT INTO USERS (LEGAL_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE)
+    INSERT INTO users (legal_id, first_name, last_name, email, phone)
     VALUES (${user.legalId}, ${user.firstName}, ${user.lastName}, ${user.email}, ${user.phone})
   """.update
   
   def selectByLegalId(legalId: String): Query0[User] = sql"""
-    SELECT ID, LEGAL_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE
-    FROM USERS
-    WHERE LEGAL_ID = $legalId
+    SELECT id, legal_id, first_name, last_name, email, phone
+    FROM users
+    WHERE legal_id = $legalId
   """.query[User]
 
   def delete(legalId: String): Update0 = sql"""
-    DELETE FROM USERS WHERE LEGAL_ID = $legalId
+    DELETE FROM users WHERE legal_id = $legalId
      """.update
   
   def updateUser(user: User, legalId: String): Update0  = sql"""
-    UPDATE USERS SET FIRST_NAME =${user.firstName}, LAST_NAME = ${user.lastName}, EMAIL = ${user.email}, PHONE = ${user.phone}
-    WHERE LEGAL_ID = $legalId
+    UPDATE users SET first_name =${user.firstName}, last_name = ${user.lastName}, email = ${user.email}, phone = ${user.phone}
+    WHERE legal_id = $legalId
   """.update 
 }
 
@@ -33,7 +33,7 @@ class DoobieUserRepositoryInterpreter[F[_]: Bracket[?[_], Throwable]](val xa: Tr
     extends UserRepositoryAlgebra[F] {
   import UserSQL._
   def create(user: User): F[User] = 
-    insert(user).withUniqueGeneratedKeys[Long]("ID").map(id => user.copy(id = id.some)).transact(xa)
+    insert(user).withUniqueGeneratedKeys[Long]("id").map(id => user.copy(id = id.some)).transact(xa)
   def findByLegalId(legalId: String): OptionT[F, User] = OptionT(selectByLegalId(legalId).option.transact(xa))
   def deleteUser(legalId: String):  F[Int] = {
     delete(legalId).run.transact(xa)

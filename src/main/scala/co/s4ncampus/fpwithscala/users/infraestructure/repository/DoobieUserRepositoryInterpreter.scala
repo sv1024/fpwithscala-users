@@ -1,7 +1,6 @@
 package co.s4ncampus.fpwithscala.users.infraestructure.repository
 
 import co.s4ncampus.fpwithscala.users.domain._
-
 import cats.data._
 import cats.syntax.all._
 import doobie._
@@ -22,8 +21,12 @@ private object UserSQL {
   def updateUser(user: User, legalId: String): Query0[User] = sql"""
     UPDATE USERS SET FIRST_NAME = (${user.firstName}), LAST_NAME = (${user.lastName}), EMAIL = (${user.email}), PHONE = (${user.phone})
     WHERE LEGAL_ID = ($legalId)
-  """.query[User] 
+  """.query[User]
+  def delete(legalId: String): Update0 = sql"""
+    DELETE FROM USERS WHERE LEGAL_ID = $legalId
+     """.update
 }
+
 
 class DoobieUserRepositoryInterpreter[F[_]: Bracket[?[_], Throwable]](val xa: Transactor[F])
     extends UserRepositoryAlgebra[F] {
@@ -35,6 +38,10 @@ class DoobieUserRepositoryInterpreter[F[_]: Bracket[?[_], Throwable]](val xa: Tr
   def findByLegalId(legalId: String): OptionT[F, User] = OptionT(selectByLegalId(legalId).option.transact(xa))
 
   def update(user: User , legalId: String): OptionT[F, User] = OptionT(updateUser(user, legalId).option.transact(xa))
+
+  def deleteUser(legalId: String):  F[Int] = {
+    delete(legalId).run.transact(xa)
+  }
 
 }
 

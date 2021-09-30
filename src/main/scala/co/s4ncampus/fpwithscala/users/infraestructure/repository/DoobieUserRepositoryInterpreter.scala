@@ -11,17 +11,17 @@ import cats.effect.Bracket
 private object UserSQL {
 
   def insert(user: User): Update0 = sql"""
-    INSERT INTO USERS (LEGAL_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE)
+    INSERT INTO users (legal_id, first_name, last_name, email, phone)
     VALUES (${user.legalId}, ${user.firstName}, ${user.lastName}, ${user.email}, ${user.phone})
   """.update
   def selectByLegalId(legalId: String): Query0[User] = sql"""
-    SELECT ID, LEGAL_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE
-    FROM USERS
-    WHERE LEGAL_ID = $legalId
+    SELECT id, legal_id, first_name, last_name, email, phone
+    FROM users
+    WHERE legal_id = $legalId
   """.query[User]
   def updateUser(user: User, legalId: String): Query0[User] = sql"""
-    UPDATE USERS SET FIRST_NAME = (${user.firstName}), LAST_NAME = (${user.lastName}), EMAIL = (${user.email}), PHONE = (${user.phone})
-    WHERE LEGAL_ID = ($legalId)
+    UPDATE users SET first_name = (${user.firstName}), last_name = (${user.lastName}), email = (${user.email}), phone = (${user.phone})
+    WHERE legal_id = ($legalId)
   """.query[User] 
 }
 
@@ -30,7 +30,7 @@ class DoobieUserRepositoryInterpreter[F[_]: Bracket[?[_], Throwable]](val xa: Tr
   import UserSQL._
 
   def create(user: User): F[User] = 
-    insert(user).withUniqueGeneratedKeys[Long]("ID").map(id => user.copy(id = id.some)).transact(xa)
+    insert(user).withUniqueGeneratedKeys[Long]("id").map(id => user.copy(id = id.some)).transact(xa)
 
   def findByLegalId(legalId: String): OptionT[F, User] = OptionT(selectByLegalId(legalId).option.transact(xa))
 

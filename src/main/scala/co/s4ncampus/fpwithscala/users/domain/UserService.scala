@@ -13,6 +13,9 @@ class UserService[F[_]](repository: UserRepositoryAlgebra[F], validation: UserVa
   def get(legalId: String): OptionT[F, User] =
       repository.findByLegalId(legalId)
   
+  def update(user:User, legalId: String): OptionT[F, User] =
+      repository.update(user, legalId)
+  
 }
 
 object UserService{

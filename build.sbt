@@ -9,6 +9,7 @@ val MunitVersion = "0.7.20"
 val LogbackVersion = "1.2.3"
 val MunitCatsEffectVersion = "0.13.0"
 val FlywayVersion = "7.2.0"
+val ScalaTestVersion = "3.2.7"
 
 lazy val root = (project in file("."))
   .settings(
@@ -37,6 +38,7 @@ lazy val root = (project in file("."))
       "org.typelevel"   %% "munit-cats-effect-2"  % MunitCatsEffectVersion % Test,
       "org.tpolecat"    %% "doobie-scalatest"     % DoobieVersion          % Test,
       "ch.qos.logback"  %  "logback-classic"      % LogbackVersion,
+      "org.scalatest"   %% "scalatest"            % ScalaTestVersion,
     ),
     addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.10.3"),
     addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.1"),

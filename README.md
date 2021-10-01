@@ -23,17 +23,17 @@ Project created with the Scala programming language, SBT and libraries such as C
  	  3. Once the SBT is activated, type the `run` command.
  	  3. By now the project must be running.
  	  
-     *Note 1:* Don't forget to open this project as a STB project on your favorite IDE or code editor.
+     **Note 1:** Don't forget to open this project as a STB project on your favorite IDE or code editor.
 
 ## How it works
 
 ### [GET]
-##### User returned
-*Request:* 
+#### User returned
+**Request:** 
 ```http
-http://localhost:8000/users/12`
+GET http://localhost:8000/users/12`
 ``` 
-*Return:* 
+**Return:** 
 ```javascript
 {
   "id":1,
@@ -44,21 +44,21 @@ http://localhost:8000/users/12`
   "phone":"123456"
 }
 ```
-##### User not found
-*Request:* 
+#### User not found
+**Request:**
 ```http
-http://localhost:8000/users/1
+GET http://localhost:8000/users/1
 ```  
-*Return:* `The user with legal id 2 doesnt exists`
+**Return:** `The user with legal id 2 doesnt exists`
  
 ### [POST]
-##### User created
-*Request:* 
+#### User created
+**Request:** 
 ```http
-'{"legalId":"2", "firstName":"Jaime","lastName":"Gil","email":"jaime_gil@fakemail.com","phone":"123456"}' 
+POST '{"legalId":"2", "firstName":"Jaime","lastName":"Gil","email":"jaime_gil@fakemail.com","phone":"123456"}' 
 http://localhost:8000/users
 ```  
-*Return:* 
+**Return:** 
 ```javascript
 {
   "id":3,
@@ -69,40 +69,40 @@ http://localhost:8000/users
   "phone":"123456"
 }
 ```
-##### User with legal id 12 already exist
-*Request:* 
+#### User with legal id 12 already exist
+**Request:** 
 ```http
-'{"legalId":"12", "firstName":"Andres","lastName":"Perez","email":"andres_perez@fakemail.com","phone":"123456"}' http://localhost:8000/users
+POST '{"legalId":"12", "firstName":"Andres","lastName":"Perez","email":"andres_perez@fakemail.com","phone":"123456"}' http://localhost:8000/users
 ```  
-*Return:* `The user with legal id 12 already exists`
+**Return:** `The user with legal id 12 already exists`
 
 ### [PUT]
-##### User updated
-*Request:* 
+#### User updated
+**Request:** 
 ```http
-'{"legalId":"2", "firstName":"Camila","lastName":"Sanchez","email":"camila_sanchez@fakemail.com","phone":"123456"}' http://localhost:8000/users/2
+PUT '{"legalId":"2", "firstName":"Camila","lastName":"Sanchez","email":"camila_sanchez@fakemail.com","phone":"123456"}' http://localhost:8000/users/2
 ```  
-*Return:* `User updated`
-##### User not found
-*Request:* 
+**Return:** `User updated`
+#### User not found
+**Request:** 
 ```http
-'{"legalId":"2", "firstName":"Bart","lastName":"Simpson","email":"elbarto@aycaramba.com","phone":"555555"}' http://localhost:8000/users/20
+PUT '{"legalId":"2", "firstName":"Bart","lastName":"Simpson","email":"elbarto@aycaramba.com","phone":"555555"}' http://localhost:8000/users/20
 ```  
-*Return:* `The user with legal id 20 doesnt exists`
+**Return:** `The user with legal id 20 doesnt exists`
 
 ### [DELETE]
-##### User deleted
-*Request:* 
+#### User deleted
+**Request:** 
 ```http
-http://localhost:8000/users/2
+DELETE http://localhost:8000/users/2
 ```  
-*Return:* `"--- user deleted"`
-##### User not found
-*Request:* 
+**Return:** `"--- user deleted"`
+#### User not found
+**Request:** 
 ```http
-http://localhost:8000/users/20
+DELETE http://localhost:8000/users/20
 ```  
-*Return:* `"--- the user doesn't exists"`
+**Return:** `"--- the user doesn't exists"`
 
 ### Issues
 

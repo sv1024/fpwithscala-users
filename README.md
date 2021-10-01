@@ -16,14 +16,14 @@ Project created with the Scala programming language, SBT and libraries such as C
 ## Preparations
 
  - Once you had clone this repository, run the `docker-compose up` command.
- <img src="./assets/docker.gif" width="50%">
+ <img src="./assets/docker-compose.gif" width="60%" style="text-align=center">
  - Once the Postgres is created and container is up and running open the project's folder with you favorite IDE or code editor
  	In case you want to use command line, follow the step below:
  	  1. Open you preferred command terminal
  	  2. type the `sbt` command.
- 	   <img src="./assets/stb.gif" width="50%">
+ 	   <img src="./assets/stb.gif" width="60%" style="text-align=center">
  	  3. Once the SBT is activated, type the `run` command.
- 	   <img src="./assets/stb-run.gif" width="50%">
+ 	   <img src="./assets/stb-run.gif" width="60%" style="text-align=center">
  	  4. By now the project must be running.
  	  
 **Note:** Don't forget to open this project as a STB project on your favorite IDE or code editor.
@@ -112,10 +112,10 @@ DELETE http://localhost:8000/users/20
   - Need of docker-compose installed *ToBeFixed*
   
 ## Team
-[Diana]
-[Isabella]
-[Sergio]
-[Steven]
+[Diana](https://github.com/DianaRaMo)
+[Isabella](https://github.com/Thezra)
+[Sergio](https://github.com/sv1024)
+[Steven](https://github.com/RyuDesire)
 
 
 

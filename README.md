@@ -16,19 +16,22 @@ Project created with the Scala programming language, SBT and libraries such as C
 ## Preparations
 
  - Once you had clone this repository, run the `docker-compose up` command.
+ ![docker-compose](/assets/docker.gif)
  - Once the Postgres is created and container is up and running open the project's folder with you favorite IDE or code editor
  	In case you want to use command line, follow the step below:
- 	  1. Open you preffered command terminal
+ 	  1. Open you preferred command terminal
  	  2. type the `sbt` command.
+ 	  ![SBT](/assets/sbt.gif)
  	  3. Once the SBT is activated, type the `run` command.
+ 	  ![SBT run](/assets/sbt-run.gif)
  	  3. By now the project must be running.
  	  
-     **Note 1:** Don't forget to open this project as a STB project on your favorite IDE or code editor.
+**Note:** Don't forget to open this project as a STB project on your favorite IDE or code editor.
 
 ## How it works
 
 ### [GET]
-#### User returned
+**User returned**  
 **Request:** 
 ```http
 GET http://localhost:8000/users/12`
@@ -44,7 +47,7 @@ GET http://localhost:8000/users/12`
   "phone":"123456"
 }
 ```
-#### User not found
+**User not found**  
 **Request:**
 ```http
 GET http://localhost:8000/users/1
@@ -52,7 +55,7 @@ GET http://localhost:8000/users/1
 **Return:** `The user with legal id 2 doesnt exists`
  
 ### [POST]
-#### User created
+**User created**  
 **Request:** 
 ```http
 POST '{"legalId":"2", "firstName":"Jaime","lastName":"Gil","email":"jaime_gil@fakemail.com","phone":"123456"}' 
@@ -69,7 +72,7 @@ http://localhost:8000/users
   "phone":"123456"
 }
 ```
-#### User with legal id 12 already exist
+**User with legal id 12 already exist**  
 **Request:** 
 ```http
 POST '{"legalId":"12", "firstName":"Andres","lastName":"Perez","email":"andres_perez@fakemail.com","phone":"123456"}' http://localhost:8000/users
@@ -77,13 +80,13 @@ POST '{"legalId":"12", "firstName":"Andres","lastName":"Perez","email":"andres_p
 **Return:** `The user with legal id 12 already exists`
 
 ### [PUT]
-#### User updated
+**User updated**  
 **Request:** 
 ```http
 PUT '{"legalId":"2", "firstName":"Camila","lastName":"Sanchez","email":"camila_sanchez@fakemail.com","phone":"123456"}' http://localhost:8000/users/2
 ```  
 **Return:** `User updated`
-#### User not found
+**User not found**  
 **Request:** 
 ```http
 PUT '{"legalId":"2", "firstName":"Bart","lastName":"Simpson","email":"elbarto@aycaramba.com","phone":"555555"}' http://localhost:8000/users/20
@@ -91,13 +94,13 @@ PUT '{"legalId":"2", "firstName":"Bart","lastName":"Simpson","email":"elbarto@ay
 **Return:** `The user with legal id 20 doesnt exists`
 
 ### [DELETE]
-#### User deleted
+**User deleted**  
 **Request:** 
 ```http
 DELETE http://localhost:8000/users/2
 ```  
 **Return:** `"--- user deleted"`
-#### User not found
+**User not found**  
 **Request:** 
 ```http
 DELETE http://localhost:8000/users/20
@@ -107,4 +110,12 @@ DELETE http://localhost:8000/users/20
 ### Issues
 
   - Need of docker-compose installed *ToBeFixed*
+  
+## Team
+[Diana]
+[Isabella]
+[Sergio]
+[Steven]
+
+
 

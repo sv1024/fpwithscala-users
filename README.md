@@ -27,10 +27,12 @@ Project created with the Scala programming language, SBT and libraries such as C
 
 ## How it works
 
-#### [GET]
-
+### [GET]
 ##### User returned
-*Request:* `http://localhost:8000/users/12`  
+*Request:* 
+```http
+http://localhost:8000/users/12`
+``` 
 *Return:* 
 ```javascript
 {
@@ -42,12 +44,14 @@ Project created with the Scala programming language, SBT and libraries such as C
   "phone":"123456"
 }
 ```
-
 ##### User not found
-*Request:* `http://localhost:8000/users/1`  
+*Request:* 
+```http
+http://localhost:8000/users/1
+```  
 *Return:* `The user with legal id 2 doesnt exists`
  
-#### [POST]
+### [POST]
 ##### User created
 *Request:* 
 ```http
@@ -65,7 +69,6 @@ http://localhost:8000/users
   "phone":"123456"
 }
 ```
-
 ##### User with legal id 12 already exist
 *Request:* 
 ```http
@@ -73,15 +76,13 @@ http://localhost:8000/users
 ```  
 *Return:* `The user with legal id 12 already exists`
 
-#### [PUT]
-
+### [PUT]
 ##### User updated
 *Request:* 
 ```http
 '{"legalId":"2", "firstName":"Camila","lastName":"Sanchez","email":"camila_sanchez@fakemail.com","phone":"123456"}' http://localhost:8000/users/2
 ```  
 *Return:* `User updated`
-
 ##### User not found
 *Request:* 
 ```http
@@ -89,23 +90,19 @@ http://localhost:8000/users
 ```  
 *Return:* `The user with legal id 20 doesnt exists`
 
-
-#### [DELETE]
-
+### [DELETE]
 ##### User deleted
 *Request:* 
 ```http
 http://localhost:8000/users/2
 ```  
 *Return:* `"--- user deleted"`
-
 ##### User not found
 *Request:* 
 ```http
 http://localhost:8000/users/20
 ```  
 *Return:* `"--- the user doesn't exists"`
-
 
 ### Issues
 

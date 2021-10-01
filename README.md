@@ -31,7 +31,8 @@ Project created with the Scala programming language, SBT and libraries such as C
 
 ##### User returned
 *Request:* `http://localhost:8000/users/12`  
-*Return:* ```javascript
+*Return:* 
+```javascript
 {
   "id":1,
   "legalId":"12",
@@ -39,7 +40,8 @@ Project created with the Scala programming language, SBT and libraries such as C
   "lastName":"Perez",
   "email":"andres_perez@fakemail.com",
   "phone":"123456"
-}```
+}
+```
 
 ##### User not found
 *Request:* `http://localhost:8000/users/1`  
@@ -47,8 +49,13 @@ Project created with the Scala programming language, SBT and libraries such as C
  
 #### [POST]
 ##### User created
-*Request:* `'{"legalId":"2", "firstName":"Jaime","lastName":"Gil","email":"jaime_gil@fakemail.com","phone":"123456"}' http://localhost:8000/users`  
-*Return:* ```javascript
+*Request:* 
+```http
+'{"legalId":"2", "firstName":"Jaime","lastName":"Gil","email":"jaime_gil@fakemail.com","phone":"123456"}' 
+http://localhost:8000/users
+```  
+*Return:* 
+```javascript
 {
   "id":3,
   "legalId":"2",
@@ -56,31 +63,47 @@ Project created with the Scala programming language, SBT and libraries such as C
   "lastName":"Gil",
   "email":"jaime_gil@fakemail.com",
   "phone":"123456"
-}```
+}
+```
 
 ##### User with legal id 12 already exist
-*Request:* `'{"legalId":"12", "firstName":"Andres","lastName":"Perez","email":"andres_perez@fakemail.com","phone":"123456"}' http://localhost:8000/users`  
+*Request:* 
+```http
+'{"legalId":"12", "firstName":"Andres","lastName":"Perez","email":"andres_perez@fakemail.com","phone":"123456"}' http://localhost:8000/users
+```  
 *Return:* `The user with legal id 12 already exists`
 
 #### [PUT]
 
 ##### User updated
-*Request:* `'{"legalId":"2", "firstName":"Camila","lastName":"Sanchez","email":"camila_sanchez@fakemail.com","phone":"123456"}' http://localhost:8000/users/2`  
+*Request:* 
+```http
+'{"legalId":"2", "firstName":"Camila","lastName":"Sanchez","email":"camila_sanchez@fakemail.com","phone":"123456"}' http://localhost:8000/users/2
+```  
 *Return:* `User updated`
 
 ##### User not found
-*Request:* `'{"legalId":"2", "firstName":"Bart","lastName":"Simpson","email":"elbarto@aycaramba.com","phone":"555555"}' http://localhost:8000/users/20`  
+*Request:* 
+```http
+'{"legalId":"2", "firstName":"Bart","lastName":"Simpson","email":"elbarto@aycaramba.com","phone":"555555"}' http://localhost:8000/users/20
+```  
 *Return:* `The user with legal id 20 doesnt exists`
 
 
 #### [DELETE]
 
 ##### User deleted
-*Request:* `http://localhost:8000/users/2`  
+*Request:* 
+```http
+http://localhost:8000/users/2
+```  
 *Return:* `"--- user deleted"`
 
 ##### User not found
-*Request:* `http://localhost:8000/users/20`  
+*Request:* 
+```http
+http://localhost:8000/users/20
+```  
 *Return:* `"--- the user doesn't exists"`
 
 

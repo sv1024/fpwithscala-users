@@ -113,7 +113,7 @@ DELETE http://localhost:8000/users/20
   
 ## Team
 [Diana](https://github.com/DianaRaMo)  
-[Isabella](https://github.com/Thezra)  
+[Isabela](https://github.com/Thezra)  
 [Sergio](https://github.com/sv1024)  
 [Steven](https://github.com/RyuDesire)
 

@@ -16,14 +16,14 @@ Project created with the Scala programming language, SBT and libraries such as C
 ## Preparations
 
  - Once you had clone this repository, run the `docker-compose up` command.
- <img src="./assets/docker-compose.gif" width="60%" style="text-align=center">
+ <center> <img src="./assets/docker-compose.gif" width="60%"> </center>
  - Once the Postgres is created and container is up and running open the project's folder with you favorite IDE or code editor
  	In case you want to use command line, follow the step below:
  	  1. Open you preferred command terminal
  	  2. type the `sbt` command.
- 	   <img src="./assets/stb.gif" width="60%" style="text-align=center">
+ 	   <center> <img src="./assets/stb.gif" width="60%"> </center>
  	  3. Once the SBT is activated, type the `run` command.
- 	   <img src="./assets/stb-run.gif" width="60%" style="text-align=center">
+ 	   <center> <img src="./assets/stb-run.gif" width="60%"> </center>
  	  4. By now the project must be running.
  	  
 **Note:** Don't forget to open this project as a STB project on your favorite IDE or code editor.
@@ -85,7 +85,7 @@ POST '{"legalId":"12", "firstName":"Andres","lastName":"Perez","email":"andres_p
 ```http
 PUT '{"legalId":"2", "firstName":"Camila","lastName":"Sanchez","email":"camila_sanchez@fakemail.com","phone":"123456"}' http://localhost:8000/users/2
 ```  
-**Return:** `User updated`
+**Return:** `User updated`  
 **User not found**  
 **Request:** 
 ```http
@@ -99,7 +99,7 @@ PUT '{"legalId":"2", "firstName":"Bart","lastName":"Simpson","email":"elbarto@ay
 ```http
 DELETE http://localhost:8000/users/2
 ```  
-**Return:** `"--- user deleted"`
+**Return:** `"--- user deleted"`  
 **User not found**  
 **Request:** 
 ```http
@@ -112,9 +112,9 @@ DELETE http://localhost:8000/users/20
   - Need of docker-compose installed *ToBeFixed*
   
 ## Team
-[Diana](https://github.com/DianaRaMo)
-[Isabella](https://github.com/Thezra)
-[Sergio](https://github.com/sv1024)
+[Diana](https://github.com/DianaRaMo)  
+[Isabella](https://github.com/Thezra)  
+[Sergio](https://github.com/sv1024)  
 [Steven](https://github.com/RyuDesire)
 
 

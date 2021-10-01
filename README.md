@@ -16,18 +16,15 @@ Project created with the Scala programming language, SBT and libraries such as C
 ## Preparations
 
  - Once you had clone this repository, run the `docker-compose up` command.
- ![docker-compose](./assets/docker.gif)
- ![docker-compose](docker.gif)
+ <img src="./assets/docker.gif" width="50%">
  - Once the Postgres is created and container is up and running open the project's folder with you favorite IDE or code editor
  	In case you want to use command line, follow the step below:
  	  1. Open you preferred command terminal
  	  2. type the `sbt` command.
- 	  ![SBT](./assets/sbt.gif)
- 	  ![SBT](sbt.gif)
+ 	   <img src="./assets/stb.gif" width="50%">
  	  3. Once the SBT is activated, type the `run` command.
- 	  ![SBT run](./assets/sbt-run.gif)
- 	  ![SBT run](sbt-run.gif)
- 	  3. By now the project must be running.
+ 	   <img src="./assets/stb-run.gif" width="50%">
+ 	  4. By now the project must be running.
  	  
 **Note:** Don't forget to open this project as a STB project on your favorite IDE or code editor.
 

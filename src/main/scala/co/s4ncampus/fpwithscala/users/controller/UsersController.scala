@@ -25,16 +25,58 @@ class UsersController[F[_]: Sync] extends Http4sDsl[F] {
                     user <- req.as[User]
                     result <- userService.create(user).value
                 } yield result
-                
                 action.flatMap {
                     case Right(saved) => Ok(saved.asJson)
                     case Left(UserAlreadyExistsError(existing)) => Conflict(s"The user with legal id ${existing.legalId} already exists")
                 }
         }
+    private def getUser(userService: UserService[F]): HttpRoutes[F] = 
+        HttpRoutes.of[F] {
+            case GET -> Root/legalId =>
+                val action = for {
+                    result <- userService.get(legalId).value
+                } yield result
+                
+                action.flatMap {
+                    case Some(user) => Ok(user.asJson)
+                    case None => Conflict(s"The user with legal id ${legalId} doesnt exists")
+               }                
+        }
+
+    private def updateUser(userService: UserService[F]): HttpRoutes[F] = 
+        HttpRoutes.of[F] {
+            case req @ PUT -> Root/legalId =>
+                val action = for {
+                    user <- req.as[User]
+                    result <- userService.update(user, legalId)
+                } yield result
+                action.flatMap {
+                    case 1 => Ok("User updated")
+                    case 0 => Conflict(s"The user with legal id ${legalId} doesnt exists")
+               }                
+        }
+
+    private def deleteUser(userService: UserService[F]): HttpRoutes[F] =
+        HttpRoutes.of[F] {
+            case DELETE -> Root/legalId =>
+                val action = for {
+                    result <- userService.delete(legalId).value
+                } yield result
+
+                action.flatMap {
+                    case Right(saved) =>
+                        saved match {
+                            case 0 => Ok("--- the user doesn't exists".asJson)
+                            case 1 => Ok("--- user deleted".asJson)
+                        }
+
+                    case Left(UserNotExistError(existing)) => Conflict(s"The user with legal id ${existing.legalId} not exists")
+                }
+        }
 
     def endpoints(userService: UserService[F]): HttpRoutes[F] = {
         //To convine routes use the function `<+>`
-        createUser(userService)
+        createUser(userService) <+> getUser(userService) <+> updateUser(userService) <+> deleteUser(userService)
     }
 
 }

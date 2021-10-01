@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  postgressql:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: fpscala
+      POSTGRES_PASSWORD: docker123
+    ports:
+      - 5432:5432
+    volumes:
+      - /var/lib/postgresql/data
+    
